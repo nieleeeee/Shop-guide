@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>專業代購服務指南</title>
+    <style>
+        :root {
+            --primary-color: #e07a5f;
+            --secondary-color: #f4f1de;
+            --dark-color: #3d405b;
+            --light-color: #fdf0d5;
+            --accent-color: #81b29a;
+            --bg-color: #f9f8f6;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--dark-color);
+            line-height: 1.6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 600px;
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .page {
+            display: none;
+            padding: 40px 30px;
+            animation: fadeIn 0.4s ease-in-out;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* 首頁樣式 */
+        .home-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .home-header h1 {
+            font-size: 26px;
+            color: var(--dark-color);
+            margin-bottom: 10px;
+        }
+
+        .home-header p {
+            color: #666;
+            font-size: 15px;
+        }
+
+        .menu-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .menu-item {
+            background-color: var(--secondary-color);
+            border: none;
+            border-radius: 12px;
+            padding: 16px 20px;
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--dark-color);
+            text-align: left;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .menu-item:hover {
+            background-color: var(--primary-color);
+            color: #ffffff;
+            transform: translateX(4px);
+        }
+
+        /* 內頁樣式 */
+        .page-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 15px;
+        }
+
+        .back-btn {
+            background: none;
+            border: none;
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--primary-color);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: opacity 0.2s;
+        }
+
+        .back-btn:hover {
+            opacity: 0.7;
+        }
+
+        .page-title {
+            font-size: 20px;
+            color: var(--dark-color);
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .content-body {
+            font-size: 15px;
+            color: #444;
+            line-height: 1.8;
+        }
+
+        .content-body h3 {
+            margin-top: 20px;
+            margin-bottom: 8px;
+            color: var(--primary-color);
+            font-size: 17px;
+        }
+
+        .content-body p {
+            margin-bottom: 12px;
+        }
+
+        .content-body ul {
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        .content-body li {
+            margin-bottom: 6px;
+        }
+
+        /* 結語頁樣式 */
+        .outro-page {
+            text-align: center;
+        }
+
+        .outro-page h2 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 22px;
+        }
+
+        .outro-page p {
+            margin-bottom: 25px;
+            color: #555;
+        }
+
+        .action-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .action-btn:hover {
+            background-color: #d0674b;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- 首頁 -->
+    <div id="home" class="page active">
+        <div class="home-header">
+            <h1>👋 嗨！歡迎來到我們的代購小站</h1>
+            <p>請選擇你想了解的資訊，讓我們為你提供最貼心的服務：</p>
+        </div>
+        <div class="menu-list">
+            <button class="menu-item" onclick="showPage('page1')">1. 👋 歡迎加入｜我們是誰、理念是什麼 <span>➔</span></button>
+            <button class="menu-item" onclick="showPage('page2')">2. 📦 代購流程｜下單、付款、到貨時間 <span>➔</span></button>
+            <button class="menu-item" onclick="showPage('page3')">3. 💰 運費與收費方式 <span>➔</span></button>
+            <button class="menu-item" onclick="showPage('page4')">4. ❓ 常見問題（FAQ） <span>➔</span></button>
+            <button class="menu-item" onclick="showPage('page5')">5. 🔥 最新活動（定期更新） <span>➔</span></button>
+            <button class="menu-item" onclick="showPage('page6')" style="background-color: var(--accent-color); color: white;">✨ 寫在最後的話（結語） <span>➔</span></button>
+        </div>
+    </div>
+
+    <!-- 1. 歡迎加入 -->
+    <div id="page1" class="page">
+        <div class="page-header">
+            <button class="back-btn" onclick="showPage('home')">❮ 返回</button>
+            <div class="page-title">我們是誰與理念</div>
+        </div>
+        <div class="content-body">
+            <h3>👋 關於我們</h3>
+            <p>哈囉！很高興在這裡與你相遇。我們是一群熱愛發掘優質好物、追求質感生活的代購團隊。長期穿梭於各大熱門商場與源頭，致力於用最合理的價格，把全世界的好東西帶到你面前。</p>
+            <h3>💡 我們的經營理念</h3>
+            <p><strong>「誠信為本，嚴選品質」</strong>是我們的核心價值。我們深知等待包裹的心情，因此我們堅持：</p>
+            <ul>
+                <li><strong>100% 正品保證：</strong>所有商品皆由正規渠道嚴格把關，絕不販售來源不明的仿冒品。</li>
+                <li><strong>透明公開：</strong>從商品報價、國際運費到清關流程，所有費用公開透明，沒有隱藏收費。</li>
+                <li><strong>有溫度的服務：</strong>把每一位客人都當成朋友看待，售後問題不踢皮球，讓你買得安心、用得開心。</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 2. 代購流程 -->
+    <div id="page2" class="page">
+        <div class="page-header">
+            <button class="back-btn" onclick="showPage('home')">❮ 返回</button>
+            <div class="page-title">代購流程說明</div>
+        </div>
+        <div class="content-body">
+            <h3>📦 簡單四步驟，輕鬆把好物帶回家：</h3>
+            <p><strong>Step 1：挑選商品與詢價</strong><br>看中喜歡的商品嗎？私訊我們提供商品連結、截圖或規格（尺寸、顏色等），我們將盡快為您進行報價。</p>
+            <p><strong>Step 2：確認下單與付款</strong><br>確認報價與金額後，完成付款程序（支援多種付款方式），我們即會立即為您向海外進行訂購。</p>
+            <p><strong>Step 3：海外採購與國際運輸</strong><br>商品由專人進行嚴格採購與品管，並安排安全快捷的國際物流空運/海運回台。</p>
+            <p><strong>Step 4：抵台清關與超商/宅配寄出</strong><br>商品抵達台灣完成清關後，會立刻透過超商交貨便或黑貓宅配寄送到您手上，並發送出貨通知！</p>
+            <h3>⏱️ 到貨時間大約多久？</h3>
+            <p>一般現貨商品約 2-3 天寄出；預購/海外代購商品空運期約為 <strong>7-14 個工作天</strong>（不含例假日與海關查驗天數），若遇特殊節日或航班延誤會另行公告通知。</p>
+        </div>
+    </div>
+
+    <!-- 3. 運費與收費方式 -->
+    <div id="page3" class="page">
+        <div class="page-header">
+            <button class="back-btn" onclick="showPage('home')">❮ 返回</button>
+            <div class="page-title">運費與收費方式</div>
+        </div>
+        <div class="content-body">
+            <h3>💰 報價計算方式</h3>
+            <p>我們的代購費用計算公式為：<br><strong>最終結帳金額 = 商品原價（外幣折合台幣） + 國際運費 + 台灣境內運費（若有）</strong><br>（部分商品已含國際運費，將會於報價時特別標註）</p>
+            <h3>✈️ 國際運費說明</h3>
+            <p>採用計重或計體積方式收費：</p>
+            <ul>
+                <li>一般輕量商品（如服飾、美妝）：依實際重量按克數分攤計算。</li>
+                <li>易碎或體積較大商品：將依體積重（才積）進行合適的評估，確保包裝防撞安全。</li>
+            </ul>
+            <h3>🚚 台灣境內運費</h3>
+            <ul>
+                <li>7-11 / 全家 超商店到店：常態優惠運費（依平台當月公告為主）。</li>
+                <li>黑貓宅急便宅配：依包裹大小尺寸實支實付。</li>
+                <li>滿額優惠：不定期舉辦免運活動，記得關注我們獲得最新好康！</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 4. 常見問題 -->
+    <div id="page4" class="page">
+        <div class="page-header">
+            <button class="back-btn" onclick="showPage('home')">❮ 返回</button>
+            <div class="page-title">常見問題 FAQ</div>
+        </div>
+        <div class="content-body">
+            <h3>Q1：代購商品可以退換貨嗎？</h3>
+            <p>代購服務屬於「客製化給付」或「代購委任契約」，除重大瑕疵或寄錯商品外，國際代購一概不接受因「尺寸不合、顏色不喜歡、跟想像中不同」等個人因素要求退換貨。下單前請務必確認好規格唷！</p>
+            <h3>Q2：萬一商品在運送過程中損壞怎麼辦？</h3>
+            <p>我們在打包時一定會加強防撞保護（氣泡紙、緩衝材等）。若不幸發生嚴重的運輸損壞，請務必於收貨當天內提供「完整的開箱影片（從未開封到檢查完畢）」給我們，我們將協助向物流或相關單位申請理賠與善後。</p>
+            <h3>Q3：代購需要先付全額嗎？</h3>
+            <p>一般商品採「全額付款」或「訂金制（總金額的50%）」為主，確認收到款項後才會正式成立訂單幫您採購，敬請見諒與配合。</p>
+        </div>
+    </div>
+
+    <!-- 5. 最新活動 -->
+    <div id="page5" class="page">
+        <div class="page-header">
+            <button class="back-btn" onclick="showPage('home')">❮ 返回</button>
+            <div class="page-title">最新活動專區</div>
+        </div>
+        <div class="content-body">
+            <h3>🔥 【歡慶年中 618 / 雙11 狂歡購物節】特惠活動</h3>
+            <p>感謝大家一路以來的支持與信任！為了回饋老朋友、迎接新朋友，我們特別推出限時特惠企劃：</p>
+            <ul>
+                <li><strong>活動時間：</strong>即日起至當檔活動結束止。</li>
+                <li><strong>優惠內容一（免運大放送）：</strong>活動期間內，凡單筆代購金額滿新台幣 $2,000 元，即享台灣超商免運優惠！</li>
+                <li><strong>優惠內容二（老客專屬折扣）：</strong>老客戶回購並於社群曬單分享，下次代購直接折抵 $100 元現金！</li>
+                <li><strong>限量神祕福袋：</strong>各類精選熱銷好物組合限量上架，手腳慢了就搶不到囉！</li>
+            </ul>
+            <p style="color: var(--primary-color); font-weight: bold; margin-top: 15px;">💡 本欄位會隨時更新最新檔期優惠，下單前記得先來這裡看看有沒有省錢密技唷！</p>
+        </div>
+    </div>
+
+    <!-- 6. 結語頁 -->
+    <div id="page6" class="page outro-page">
+        <div class="page-header" style="justify-content: flex-start; border-bottom: none; margin-bottom: 15px; padding-bottom: 0;">
+            <button class="back-btn" onclick="showPage('home')">❮ 返回主選單</button>
+        </div>
+        <h2>✨ 讓美好的事物，陪伴你的每一天</h2>
+        <p>每一次的代購，都是一份跨越距離的信任託付。<br>我們珍惜每一次為你服務的機會，也希望透過我們的雙手，把那些讓你眼睛一亮的好東西安穩地送到你手中。<br><br>生活已經夠忙碌了，喜歡的東西就放心交給我們，讓我們陪你一起把生活過成你理想中的樣子。有任何想找的商品，隨時歡迎私訊我們聊聊！💬</p>
+        <button class="action-btn" onclick="showPage('home')">返回首頁選單</button>
+    </div>
+
+</div>
+
+<script>
+    function showPage(pageId) {
+        // 隱藏所有頁面
+        const pages = document.querySelectorAll('.page');
+        pages.forEach(page => {
+            page.classList.remove('active');
+        });
+
+        // 顯示目標頁面
+        const targetPage = document.getElementById(pageId);
+        if (targetPage) {
+            targetPage.classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    }
+</script>
+
+</body>
+</html>
