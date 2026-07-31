@@ -6,122 +6,148 @@
     <title>專業代購服務指南</title>
     <style>
         :root {
-            --primary-color: #e07a5f;
-            --secondary-color: #f4f1de;
-            --dark-color: #3d405b;
-            --light-color: #fdf0d5;
-            --accent-color: #81b29a;
-            --bg-color: #f9f8f6;
+            --bg-color: #f5f5f7; /* Apple 經典的微灰白背景 */
+            --card-bg: #ffffff;
+            --text-primary: #1d1d1f; /* Apple 標準深灰色字體 */
+            --text-secondary: #86868b; /* Apple 輔助灰色 */
+            --accent: #0071e3; /* Apple 經典藍，可依喜好調整 */
+            --border-color: #d2d2d7;
+            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); /* Apple 絲滑滑動曲線 */
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Icons", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
         }
 
         body {
             background-color: var(--bg-color);
-            color: var(--dark-color);
-            line-height: 1.6;
+            color: var(--text-primary);
+            line-height: 1.7;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            padding: 20px;
+            padding: 24px;
         }
 
         .container {
             width: 100%;
-            max-width: 600px;
-            background: #ffffff;
-            border-radius: 16px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            max-width: 580px;
+            background: var(--card-bg);
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02);
             overflow: hidden;
-            transition: all 0.3s ease;
+            transition: var(--transition);
+            border: 1px solid rgba(0, 0, 0, 0.04);
         }
 
         .page {
             display: none;
-            padding: 40px 30px;
-            animation: fadeIn 0.4s ease-in-out;
+            padding: 48px 36px;
+            opacity: 0;
+            transform: translateY(12px) scale(0.99);
+            transition: var(--transition);
         }
 
         .page.active {
             display: block;
+            opacity: 1;
+            transform: translateY(0) scale(1);
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* 首頁樣式 */
+        /* 首頁設計 */
         .home-header {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 36px;
         }
 
         .home-header h1 {
-            font-size: 26px;
-            color: var(--dark-color);
-            margin-bottom: 10px;
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: -0.015em;
+            color: var(--text-primary);
+            margin-bottom: 12px;
         }
 
         .home-header p {
-            color: #666;
+            color: var(--text-secondary);
             font-size: 15px;
+            font-weight: 400;
         }
 
         .menu-list {
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 12px;
         }
 
         .menu-item {
-            background-color: var(--secondary-color);
-            border: none;
-            border-radius: 12px;
-            padding: 16px 20px;
-            font-size: 16px;
-            font-weight: 600;
-            color: var(--dark-color);
+            background-color: #fbfbfd;
+            border: 1px solid #e8e8ed;
+            border-radius: 14px;
+            padding: 18px 22px;
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--text-primary);
             text-align: left;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: var(--transition);
             display: flex;
             align-items: center;
             justify-content: space-between;
         }
 
-        .menu-item:hover {
-            background-color: var(--primary-color);
-            color: #ffffff;
-            transform: translateX(4px);
+        .menu-item span {
+            color: var(--text-secondary);
+            transition: var(--transition);
         }
 
-        /* 內頁樣式 */
+        .menu-item:hover {
+            background-color: #f5f5f7;
+            border-color: #c7c7cc;
+            transform: scale(1.01);
+        }
+
+        .menu-item:hover span {
+            color: var(--text-primary);
+            transform: translateX(3px);
+        }
+
+        .menu-item:active {
+            transform: scale(0.98);
+        }
+
+        /* 結語按鈕獨立特色 */
+        .menu-item.special {
+            background: linear-gradient(135deg, #f5f5f7, #eeeee4);
+            border-color: #e3e3dc;
+            font-weight: 600;
+        }
+
+        /* 內頁設計 */
         .page-header {
             display: flex;
             align-items: center;
-            margin-bottom: 25px;
-            border-bottom: 2px solid var(--secondary-color);
-            padding-bottom: 15px;
+            margin-bottom: 32px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid #e8e8ed;
         }
 
         .back-btn {
             background: none;
             border: none;
-            font-size: 16px;
-            font-weight: 600;
-            color: var(--primary-color);
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--accent);
             cursor: pointer;
             display: flex;
             align-items: center;
-            gap: 5px;
-            transition: opacity 0.2s;
+            gap: 4px;
+            transition: opacity 0.2s ease;
         }
 
         .back-btn:hover {
@@ -129,68 +155,83 @@
         }
 
         .page-title {
-            font-size: 20px;
-            color: var(--dark-color);
+            font-size: 17px;
+            font-weight: 600;
+            color: var(--text-primary);
             margin-left: auto;
             margin-right: auto;
+            letter-spacing: -0.01em;
         }
 
         .content-body {
             font-size: 15px;
-            color: #444;
+            color: #424245;
             line-height: 1.8;
         }
 
         .content-body h3 {
-            margin-top: 20px;
-            margin-bottom: 8px;
-            color: var(--primary-color);
+            margin-top: 24px;
+            margin-bottom: 10px;
+            color: var(--text-primary);
             font-size: 17px;
+            font-weight: 600;
+            letter-spacing: -0.01em;
         }
 
         .content-body p {
-            margin-bottom: 12px;
+            margin-bottom: 14px;
         }
 
         .content-body ul {
             padding-left: 20px;
-            margin-bottom: 15px;
+            margin-bottom: 18px;
         }
 
         .content-body li {
-            margin-bottom: 6px;
+            margin-bottom: 8px;
+            color: #424245;
         }
 
-        /* 結語頁樣式 */
+        /* 結語頁設計 */
         .outro-page {
             text-align: center;
+            padding: 20px 10px;
         }
 
         .outro-page h2 {
-            color: var(--primary-color);
-            margin-bottom: 15px;
-            font-size: 22px;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 20px;
+            letter-spacing: -0.015em;
         }
 
         .outro-page p {
-            margin-bottom: 25px;
-            color: #555;
+            margin-bottom: 36px;
+            color: var(--text-secondary);
+            font-size: 15px;
+            line-height: 1.9;
         }
 
         .action-btn {
-            background-color: var(--primary-color);
+            background-color: var(--text-primary);
             color: white;
             border: none;
-            border-radius: 12px;
-            padding: 12px 24px;
-            font-size: 16px;
-            font-weight: 600;
+            border-radius: 980px; /* Apple 經典大圓角膠囊按鈕 */
+            padding: 14px 32px;
+            font-size: 15px;
+            font-weight: 500;
             cursor: pointer;
-            transition: background 0.2s;
+            transition: var(--transition);
         }
 
         .action-btn:hover {
-            background-color: #d0674b;
+            background-color: #333333;
+            transform: scale(1.02);
+        }
+
+        .action-btn:active {
+            transform: scale(0.97);
         }
     </style>
 </head>
@@ -210,14 +251,14 @@
             <button class="menu-item" onclick="showPage('page3')">3. 💰 運費與收費方式 <span>➔</span></button>
             <button class="menu-item" onclick="showPage('page4')">4. ❓ 常見問題（FAQ） <span>➔</span></button>
             <button class="menu-item" onclick="showPage('page5')">5. 🔥 最新活動（定期更新） <span>➔</span></button>
-            <button class="menu-item" onclick="showPage('page6')" style="background-color: var(--accent-color); color: white;">✨ 寫在最後的話（結語） <span>➔</span></button>
+            <button class="menu-item special" onclick="showPage('page6')">✨ 寫在最後的話（結語） <span>➔</span></button>
         </div>
     </div>
 
     <!-- 1. 歡迎加入 -->
     <div id="page1" class="page">
         <div class="page-header">
-            <button class="back-btn" onclick="showPage('home')">❮ 返回</button>
+            <button class="back-btn" onclick="showPage('home')">〈 返回</button>
             <div class="page-title">我們是誰與理念</div>
         </div>
         <div class="content-body">
@@ -236,7 +277,7 @@
     <!-- 2. 代購流程 -->
     <div id="page2" class="page">
         <div class="page-header">
-            <button class="back-btn" onclick="showPage('home')">❮ 返回</button>
+            <button class="back-btn" onclick="showPage('home')">〈 返回</button>
             <div class="page-title">代購流程說明</div>
         </div>
         <div class="content-body">
@@ -253,7 +294,7 @@
     <!-- 3. 運費與收費方式 -->
     <div id="page3" class="page">
         <div class="page-header">
-            <button class="back-btn" onclick="showPage('home')">❮ 返回</button>
+            <button class="back-btn" onclick="showPage('home')">〈 返回</button>
             <div class="page-title">運費與收費方式</div>
         </div>
         <div class="content-body">
@@ -277,7 +318,7 @@
     <!-- 4. 常見問題 -->
     <div id="page4" class="page">
         <div class="page-header">
-            <button class="back-btn" onclick="showPage('home')">❮ 返回</button>
+            <button class="back-btn" onclick="showPage('home')">〈 返回</button>
             <div class="page-title">常見問題 FAQ</div>
         </div>
         <div class="content-body">
@@ -293,7 +334,7 @@
     <!-- 5. 最新活動 -->
     <div id="page5" class="page">
         <div class="page-header">
-            <button class="back-btn" onclick="showPage('home')">❮ 返回</button>
+            <button class="back-btn" onclick="showPage('home')">〈 返回</button>
             <div class="page-title">最新活動專區</div>
         </div>
         <div class="content-body">
@@ -305,17 +346,17 @@
                 <li><strong>優惠內容二（老客專屬折扣）：</strong>老客戶回購並於社群曬單分享，下次代購直接折抵 $100 元現金！</li>
                 <li><strong>限量神祕福袋：</strong>各類精選熱銷好物組合限量上架，手腳慢了就搶不到囉！</li>
             </ul>
-            <p style="color: var(--primary-color); font-weight: bold; margin-top: 15px;">💡 本欄位會隨時更新最新檔期優惠，下單前記得先來這裡看看有沒有省錢密技唷！</p>
+            <p style="color: var(--accent); font-weight: 500; margin-top: 15px;">💡 本欄位會隨時更新最新檔期優惠，下單前記得先來這裡看看有沒有省錢密技唷！</p>
         </div>
     </div>
 
     <!-- 6. 結語頁 -->
     <div id="page6" class="page outro-page">
-        <div class="page-header" style="justify-content: flex-start; border-bottom: none; margin-bottom: 15px; padding-bottom: 0;">
-            <button class="back-btn" onclick="showPage('home')">❮ 返回主選單</button>
+        <div class="page-header" style="border-bottom: none; margin-bottom: 20px; padding-bottom: 0;">
+            <button class="back-btn" onclick="showPage('home')">〈 返回主選單</button>
         </div>
         <h2>✨ 讓美好的事物，陪伴你的每一天</h2>
-        <p>每一次的代購，都是一份跨越距離的信任託付。<br>我們珍惜每一次為你服務的機會，也希望透過我們的雙手，把那些讓你眼睛一亮的好東西安穩地送到你手中。<br><br>生活已經夠忙碌了，喜歡的東西就放心交給我們，讓我們陪你一起把生活過成你理想中的樣子。有任何想找的商品，隨時歡迎私訊我們聊聊！💬</p>
+        <p>每一次的代購，都是一份跨越距離的信任託付。我們珍惜每一次為你服務的機會，也希望透過我們的雙手，把那些讓你眼睛一亮的好東西安穩地送到你手中。<br><br>生活已經夠忙碌了，喜歡的東西就放心交給我們，讓我們陪你一起把生活過成你理想中的樣子。</p>
         <button class="action-btn" onclick="showPage('home')">返回首頁選單</button>
     </div>
 
@@ -323,16 +364,16 @@
 
 <script>
     function showPage(pageId) {
-        // 隱藏所有頁面
         const pages = document.querySelectorAll('.page');
         pages.forEach(page => {
             page.classList.remove('active');
         });
 
-        // 顯示目標頁面
         const targetPage = document.getElementById(pageId);
         if (targetPage) {
-            targetPage.classList.add('active');
+            setTimeout(() => {
+                targetPage.classList.add('active');
+            }, 50);
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
     }
