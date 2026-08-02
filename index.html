@@ -6,12 +6,12 @@
     <title>專業代購服務指南</title>
     <style>
         :root {
-            --bg-color: #f5f5f7;
-            --card-bg: #ffffff;
-            --text-primary: #1d1d1f;
-            --text-secondary: #86868b;
-            --accent: #0071e3;
-            --border-color: #d2d2d7;
+            --bg-color: #f7f4ed;          /* 燕麥奶茶色背景 */
+            --card-bg: #ffffff;           /* 卡片純白底 */
+            --text-primary: #3a3532;      /* 深褐灰色字，柔和不刺眼 */
+            --text-secondary: #8c837c;    /* 次要文字色 */
+            --accent: #736357;            /* 溫潤可可色 */
+            --border-color: #e3ded6;      /* 柔和邊框線 */
             --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
@@ -19,7 +19,7 @@
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Icons", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Hiragino Sans TC", "Microsoft JhengHei", sans-serif;
             -webkit-font-smoothing: antialiased;
         }
 
@@ -38,11 +38,11 @@
             width: 100%;
             max-width: 580px;
             background: var(--card-bg);
-            border-radius: 24px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02);
+            border-radius: 20px;
+            box-shadow: 0 16px 36px rgba(115, 99, 87, 0.06), 0 1px 3px rgba(0, 0, 0, 0.02);
             overflow: hidden;
             transition: var(--transition);
-            border: 1px solid rgba(0, 0, 0, 0.04);
+            border: 1px solid var(--border-color);
         }
 
         .page {
@@ -62,57 +62,46 @@
         /* 首頁設計 */
         .home-header {
             text-align: center;
-            margin-bottom: 36px;
+            margin-bottom: 24px;
         }
 
         .home-header h1 {
-            font-size: 26px;
-            font-weight: 700;
-            letter-spacing: -0.015em;
+            font-size: 24px;
+            font-weight: 600;
+            letter-spacing: 0.05em;
             color: var(--text-primary);
-            margin-bottom: 12px;
+            margin-bottom: 6px;
         }
 
         .home-header p {
             color: var(--text-secondary);
-            font-size: 15px;
-            font-weight: 400;
-            margin-bottom: 8px;
+            font-size: 14px;
         }
 
+        /* 虛線框設計 (對應日式美學質感) */
         .sub-intro {
             font-size: 14px;
-            color: #555;
-            background: #fbfbfd;
-            border: 1px solid #e8e8ed;
-            padding: 16px;
-            border-radius: 14px;
+            color: #59524c;
+            background: #faf8f5;
+            border: 1.5px dashed var(--border-color);
+            padding: 18px;
+            border-radius: 12px;
             text-align: left;
-            margin-bottom: 24px;
-            line-height: 1.7;
-        }
-
-        .nav-title-label {
-            font-size: 13px;
-            font-weight: 600;
-            color: var(--text-secondary);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-bottom: 10px;
-            text-align: left;
+            margin-bottom: 28px;
+            line-height: 1.8;
         }
 
         .menu-list {
             display: flex;
             flex-direction: column;
-            gap: 14px;
+            gap: 12px;
         }
 
         .menu-item {
-            background-color: #fbfbfd;
-            border: 1px solid #e8e8ed;
-            border-radius: 14px;
-            padding: 20px 22px;
+            background-color: #faf8f5;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 18px 20px;
             font-size: 15px;
             font-weight: 500;
             color: var(--text-primary);
@@ -130,8 +119,8 @@
         }
 
         .menu-item:hover {
-            background-color: #f5f5f7;
-            border-color: #c7c7cc;
+            background-color: #f2eee9;
+            border-color: #c7beb4;
             transform: scale(1.01);
         }
 
@@ -146,54 +135,53 @@
 
         /* 結語按鈕獨立特色 */
         .menu-item.special {
-            background: linear-gradient(135deg, #f0f4f8, #e2e8f0);
-            border: 1.5px dashed #cbd5e1;
+            background: linear-gradient(135deg, #f5f0eb, #ebe3db);
+            border: 1.5px dashed #c7beb4;
             font-weight: 600;
-            margin-top: 6px;
+            margin-top: 4px;
         }
 
         /* 內頁設計 */
         .page-header {
             text-align: center;
-            margin-bottom: 32px;
+            margin-bottom: 28px;
             padding-bottom: 16px;
-            border-bottom: 1px solid #e8e8ed;
+            border-bottom: 1px solid var(--border-color);
         }
 
         .page-title {
-            font-size: 20px;
-            font-weight: 700;
+            font-size: 19px;
+            font-weight: 600;
             color: var(--text-primary);
-            letter-spacing: -0.01em;
+            letter-spacing: 0.03em;
         }
 
         .content-body {
             font-size: 15px;
-            color: #424245;
+            color: #4a4440;
             line-height: 1.8;
         }
 
         .content-body h3 {
-            margin-top: 32px;
-            margin-bottom: 12px;
+            margin-top: 28px;
+            margin-bottom: 10px;
             color: var(--text-primary);
-            font-size: 18px;
-            font-weight: 700;
-            letter-spacing: -0.01em;
+            font-size: 17px;
+            font-weight: 600;
         }
 
         .content-body p {
-            margin-bottom: 16px;
+            margin-bottom: 14px;
         }
 
         .content-body ul {
             padding-left: 20px;
-            margin-bottom: 18px;
+            margin-bottom: 16px;
         }
 
         .content-body li {
             margin-bottom: 8px;
-            color: #424245;
+            color: #4a4440;
         }
 
         /* 價格表格專用樣式 */
@@ -202,20 +190,20 @@
             border-collapse: collapse;
             margin: 20px 0;
             font-size: 14px;
-            background: #fbfbfd;
-            border-radius: 12px;
+            background: #faf8f5;
+            border-radius: 10px;
             overflow: hidden;
-            border: 1px solid #e8e8ed;
+            border: 1px solid var(--border-color);
         }
 
         .price-table th, .price-table td {
             padding: 12px 14px;
             text-align: left;
-            border-bottom: 1px solid #e8e8ed;
+            border-bottom: 1px solid var(--border-color);
         }
 
         .price-table th {
-            background-color: #f0f0f2;
+            background-color: #f2eee9;
             font-weight: 600;
             color: var(--text-primary);
         }
@@ -224,9 +212,89 @@
             border-bottom: none;
         }
 
+        /* 複製帳號按鈕樣式 */
+        .copy-box {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #faf8f5;
+            border: 1px solid var(--border-color);
+            padding: 12px 16px;
+            border-radius: 10px;
+            margin-top: 8px;
+            margin-bottom: 16px;
+        }
+
+        .copy-btn {
+            background-color: var(--text-primary);
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            padding: 6px 14px;
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .copy-btn:hover {
+            background-color: var(--accent);
+        }
+
+        /* 下拉式選單 (Accordion) 樣式 */
+        .accordion-item {
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            margin-bottom: 12px;
+            background: #faf8f5;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .accordion-header {
+            width: 100%;
+            padding: 16px 18px;
+            background: none;
+            border: none;
+            text-align: left;
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--text-primary);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .accordion-header::after {
+            content: '+';
+            font-size: 18px;
+            color: var(--text-secondary);
+            transition: var(--transition);
+        }
+
+        .accordion-item.active .accordion-header::after {
+            transform: rotate(45deg);
+        }
+
+        .accordion-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            padding: 0 18px;
+            font-size: 14px;
+            color: #4a4440;
+        }
+
+        .accordion-item.active .accordion-body {
+            max-height: 500px;
+            padding-bottom: 18px;
+            transition: max-height 0.4s ease-in;
+        }
+
         /* 底部返回按鈕區塊 */
         .page-footer-nav {
-            margin-top: 40px;
+            margin-top: 36px;
             text-align: center;
             display: flex;
             justify-content: center;
@@ -236,8 +304,8 @@
             background: none;
             border: 1px solid var(--border-color);
             border-radius: 980px;
-            padding: 10px 24px;
-            font-size: 14px;
+            padding: 8px 22px;
+            font-size: 13px;
             font-weight: 500;
             color: var(--text-secondary);
             cursor: pointer;
@@ -245,7 +313,7 @@
         }
 
         .back-btn-bottom:hover {
-            background-color: #f5f5f7;
+            background-color: #f2eee9;
             color: var(--text-primary);
             border-color: var(--text-secondary);
         }
@@ -253,38 +321,38 @@
         /* 結語頁設計 */
         .outro-page {
             text-align: center;
-            padding: 20px 10px 40px 10px;
+            padding: 10px 10px 30px 10px;
         }
 
         .outro-page h2 {
-            font-size: 24px;
-            font-weight: 700;
+            font-size: 22px;
+            font-weight: 600;
             color: var(--text-primary);
-            margin-bottom: 20px;
-            letter-spacing: -0.015em;
+            margin-bottom: 18px;
+            letter-spacing: 0.03em;
         }
 
         .outro-page p {
-            margin-bottom: 24px;
-            color: #424245;
-            font-size: 15px;
-            line-height: 1.9;
+            margin-bottom: 20px;
+            color: #4a4440;
+            font-size: 14.5px;
+            line-height: 1.85;
             text-align: left;
         }
 
         .outro-action-box {
-            margin-top: 32px;
-            background: #fbfbfd;
-            border: 1px solid #e8e8ed;
-            padding: 20px;
-            border-radius: 16px;
+            margin-top: 28px;
+            background: #faf8f5;
+            border: 1px solid var(--border-color);
+            padding: 18px;
+            border-radius: 12px;
         }
 
         .action-links {
             display: flex;
             flex-direction: column;
-            gap: 12px;
-            margin-top: 16px;
+            gap: 10px;
+            margin-top: 14px;
         }
 
         .action-link-btn {
@@ -293,15 +361,15 @@
             color: white;
             text-decoration: none;
             border-radius: 980px;
-            padding: 14px 24px;
-            font-size: 15px;
+            padding: 12px 20px;
+            font-size: 14px;
             font-weight: 500;
             transition: var(--transition);
             text-align: center;
         }
 
         .action-link-btn:hover {
-            background-color: #333333;
+            background-color: var(--accent);
             transform: scale(1.02);
         }
 
@@ -310,16 +378,16 @@
             color: white;
             border: none;
             border-radius: 980px;
-            padding: 14px 32px;
-            font-size: 15px;
+            padding: 12px 28px;
+            font-size: 14px;
             font-weight: 500;
             cursor: pointer;
             transition: var(--transition);
-            margin-top: 20px;
+            margin-top: 24px;
         }
 
         .action-btn:hover {
-            background-color: #333333;
+            background-color: var(--accent);
             transform: scale(1.02);
         }
     </style>
@@ -331,13 +399,12 @@
     <!-- 首頁 -->
     <div id="home" class="page active">
         <div class="home-header">
-            <h1>✈️代你飛使用手冊</h1>
-            <p>💌</p>
+            <h1>✈️ 代你飛使用手冊</h1>
+            <p>心伝美學同款溫潤風格</p>
         </div>
         <div class="sub-intro">
             起初只是為了方便換匯跟清零卡費，順便滿足自己「愛買又愛分享」的心態（笑）。沒想到一路走來，變成了一個大家一起挖寶的小天地！希望大家都能在這裡用最合理的價格，買到實用的好東西🫶
         </div>
-        
         
         <div class="menu-list">
             <button class="menu-item" onclick="showPage('page1')">👋 歡迎加入（服務簡介） <span>➔</span></button>
@@ -434,8 +501,12 @@
             <h3>💳 轉帳付款資訊</h3>
             <ul>
                 <li><strong>指定銀行：</strong>國泰世華銀行 (013)</li>
-                <li><strong>匯款帳號：</strong>214506230438</li>
             </ul>
+            <p style="margin-bottom: 6px;"><strong>匯款帳號：</strong></p>
+            <div class="copy-box">
+                <span id="bankAccount" style="font-family: monospace; font-size: 16px; font-weight: 600;">214506230438</span>
+                <button class="copy-btn" onclick="copyAccount()">複製帳號</button>
+            </div>
             <p><strong>運費說明：</strong>台灣國內運費另計，商品一抵台會盡快為您寄出。</p>
         </div>
         <div class="page-footer-nav">
@@ -449,25 +520,43 @@
             <div class="page-title">❓ 常見問題 FAQ</div>
         </div>
         <div class="content-body">
-            <h3>Ｑ： 為什麼找代購比自己買方便？</h3>
-            <ul>
-                <li><strong>突破購買限制：</strong>台灣帳號半年購買淘寶超過 6 次易被課稅；部分商家/天貓國際不支援寄送台灣。</li>
-                <li><strong>降低海外風險：</strong>海外退換貨流程極繁瑣且成本高，我們會在第一層把關品質，減少商品瑕疵問題。</li>
-                <li><strong>工廠源頭價格優勢：</strong>中國市場規模大，同款商品（如運動相機、無人機或同工廠貼牌產品）價格可節省約 15%～20%。</li>
-            </ul>
+            
+            <div class="accordion-item">
+                <button class="accordion-header" onclick="toggleAccordion(this)">Ｑ：為什麼找代購比自己買方便？</button>
+                <div class="accordion-body">
+                    <ul>
+                        <li><strong>突破購買限制：</strong>台灣帳號半年購買淘寶超過 6 次易被課稅；部分商家/天貓國際不支援寄送台灣。</li>
+                        <li><strong>降低海外風險：</strong>海外退換貨流程極繁瑣且成本高，我們會在第一層把關品質，減少商品瑕疵問題。</li>
+                        <li><strong>工廠源頭價格優勢：</strong>中國市場規模大，同款商品（如運動相機、無人機或同工廠貼牌產品）價格可節省約 15%～20%。</li>
+                    </ul>
+                </div>
+            </div>
 
-            <h3>Ｑ：衣服尺寸與材質怎麼選？</h3>
-            <p>我們會盡力提供建議，但每件衣服版型、材質與個人穿著習慣（鬆緊度感受）不同，請大家務必參考尺寸表自行斟酌喔！</p>
+            <div class="accordion-item">
+                <button class="accordion-header" onclick="toggleAccordion(this)">Ｑ：衣服尺寸與材質怎麼選？</button>
+                <div class="accordion-body">
+                    <p style="margin-top: 10px;">我們會盡力提供建議，但每件衣服版型、材質與個人穿著習慣（鬆緊度感受）不同，請大家務必參考尺寸表自行斟酌喔！</p>
+                </div>
+            </div>
 
-            <h3>Ｑ：可以退換貨嗎？</h3>
-            <p>代購服務屬於「客製化給付」，不適用於消保法 7 天鑑賞期，恕不接受退貨。<br>若不幸遇到賣家誤寄尺寸、款式或顏色，請於收到商品 <strong>3天內</strong> 告知並提出寄回/面交，我們將給予額外補償。</p>
+            <div class="accordion-item">
+                <button class="accordion-header" onclick="toggleAccordion(this)">Ｑ：可以退換貨嗎？</button>
+                <div class="accordion-body">
+                    <p style="margin-top: 10px;">代購服務屬於「客製化給付」，不適用於消保法 7 天鑑賞期，恕不接受退貨。<br>若不幸遇到賣家誤寄尺寸、款式或顏色，請於收到商品 <strong>3天內</strong> 告知並提出寄回/面交，我們將給予額外補償。</p>
+                </div>
+            </div>
 
-            <h3>Ｑ：關於出貨時間與做工說明</h3>
-            <ul>
-                <li><strong>海外做工：</strong>商品多由第三方國家製造，微小線頭、極小溢膠、輕微脫線等均屬正常範圍。</li>
-                <li><strong>不可抗力狀況：</strong>若遇到缺貨、斷貨或運輸包裝破裂💥，可保留購物金，無全額退費。</li>
-                <li><strong>行李限額：</strong>單人代購行李空間有限，若超量將順延至下一趟帶回；若遇延機等突發狀況會第一時間通知。</li>
-            </ul>
+            <div class="accordion-item">
+                <button class="accordion-header" onclick="toggleAccordion(this)">Ｑ：關於出貨時間與做工說明</button>
+                <div class="accordion-body">
+                    <ul>
+                        <li><strong>海外做工：</strong>商品多由第三方國家製造，微小線頭、極小溢膠、輕微脫線等均屬正常範圍。</li>
+                        <li><strong>不可抗力狀況：</strong>若遇到缺貨、斷貨或運輸包裝破裂💥，可保留購物金，無全額退費。</li>
+                        <li><strong>行李限額：</strong>單人代購行李空間有限，若超量將順延至下一趟帶回；若遇延機等突發狀況會第一時間通知。</li>
+                    </ul>
+                </div>
+            </div>
+
         </div>
         <div class="page-footer-nav">
             <button class="back-btn-bottom" onclick="showPage('home')">〈 返回主選單</button>
@@ -483,7 +572,7 @@
             <h3>🎉 當前熱門活動</h3>
             <p><strong>預告檔期：</strong>88父親節、雙 11 購物節專屬優惠準備中！</p>
             <p>更多限時快閃與連線折扣，請關注我們的 <strong>IG 限時動態</strong> 與 <strong>LINE 社群</strong> 訊息。</p>
-            <p style="color: var(--text-secondary); font-size: 13px; margin-top: 16px; font-style: italic;">(本區塊將隨最新活動定期更新)</p>
+            <p style="color: var(--text-secondary); font-size: 13px; margin-top: 24px; font-style: italic; border-top: 1px dashed var(--border-color); paddingTop: 14px;">(本區塊將隨最新活動定期更新)<br>※ 本代購團隊保有活動內容最終解釋與修改之權利。</p>
         </div>
         <div class="page-footer-nav">
             <button class="back-btn-bottom" onclick="showPage('home')">〈 返回主選單</button>
@@ -508,12 +597,12 @@
         <p>生活已經夠忙碌了，喜歡的東西就放心交給我們，讓我們陪你一起把生活過成你理想中的樣子。✨</p>
 
         <div class="outro-action-box">
-            <p style="text-align: center; font-weight: 600; margin-bottom: 12px;">🎁 準備好跟我們一起挖寶了嗎？</p>
-            <p style="text-align: center; font-size: 13px; color: var(--text-secondary); margin-bottom: 16px;">點擊下方連結立即開始尋寶，請確認已詳閱購物規範，下單即視為同意規定喔！</p>
+            <p style="text-align: center; font-weight: 600; margin-bottom: 10px;">🎁 準備好跟我們一起挖寶了嗎？</p>
+            <p style="text-align: center; font-size: 13px; color: var(--text-secondary); margin-bottom: 14px;">點擊下方連結立即開始尋寶，請確認已詳閱購物規範，下單即視為同意規定喔！</p>
             <div class="action-links">
                 <a href="https://line.me" target="_blank" class="action-link-btn">💬 私訊 LINE 客服</a>
-                <a href="https://www.instagram.com/blue_nie/" target="_blank" class="action-link-btn" style="background-color: #e1306c;">🔗 逛逛 IG 精選動態 (blue_nie)</a>
-                <a href="https://www.instagram.com/ashhhh94/" target="_blank" class="action-link-btn" style="background-color: #e1306c;">🔗 逛逛 IG 精選動態 (ashhhh94)</a>
+                <a href="https://www.instagram.com/blue_nie/" target="_blank" class="action-link-btn" style="background-color: #a67c65;">🔗 逛逛 IG 精選動態 (blue_nie)</a>
+                <a href="https://www.instagram.com/ashhhh94/" target="_blank" class="action-link-btn" style="background-color: #a67c65;">🔗 逛逛 IG 精選動態 (ashhhh94)</a>
             </div>
         </div>
 
@@ -535,6 +624,31 @@
                 targetPage.classList.add('active');
             }, 50);
             window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    }
+
+    // 帳號複製功能
+    function copyAccount() {
+        const accountText = document.getElementById('bankAccount').innerText;
+        navigator.clipboard.writeText(accountText).then(() => {
+            event.target.innerText = '已複製！✨';
+            setTimeout(() => {
+                event.target.innerText = '複製帳號';
+            }, 2000);
+        }).catch(err => {
+            alert('複製失敗，請手動複製');
+        });
+    }
+
+    // 常見問題下拉選單開合控制
+    function toggleAccordion(header) {
+        const item = header.parentElement;
+        const isActive = item.classList.contains('active');
+
+        if (!isActive) {
+            item.classList.add('active');
+        } else {
+            item.classList.remove('active');
         }
     }
 </script>
