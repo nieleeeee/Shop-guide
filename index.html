@@ -34,14 +34,14 @@
         }
 
         body {
-            background-color: var(--bg-color);
-            color: var(--text-primary);
-            line-height: 1.85;
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            min-height: 100vh;
-            padding: 24px 16px;
+    background-color: var(--bg-color);
+    /* 利用 CSS 多層放射漸層模擬柔和的光芒與暗角 */
+    background-image: 
+        radial-gradient(at 10% 10%, rgba(255, 255, 255, 0.5) 0px, transparent 50%),
+        radial-gradient(at 90% 90%, rgba(216, 206, 190, 0.3) 0px, transparent 50%);
+    background-attachment: fixed;
+    color: var(--text-primary);
+    /* ... 其餘樣式保持不變 ... */
         }
 
         .container {
