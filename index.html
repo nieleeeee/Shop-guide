@@ -3,7 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>代你飛 | 專業代購服務指南</title>
+    <title>代你飛 ✈️ 尋寶手冊</title>
+    
+    <!-- OG 網頁預覽卡片 (方案 C) -->
+    <meta property="og:title" content="代你飛 ✈️ 尋寶手冊">
+    <meta property="og:description" content="喜歡的東西，放心交給我們。點擊了解服務規範與最新活動 💌">
+    <meta name="description" content="喜歡的東西，放心交給我們。點擊了解服務規範與最新活動 💌">
+    <meta property="og:type" content="website">
+
     <style>
         :root {
             --bg-color: #f7f4ed;          /* 燕麥奶茶色背景 */
@@ -11,6 +18,7 @@
             --text-primary: #3a3532;      /* 深褐灰色字 */
             --text-secondary: #8c837c;    /* 次要文字色 */
             --accent: #736357;            /* 溫潤可可色 */
+            --tab-active-bg: #eae3d9;     /* 选中 Tab 的奶茶色膠囊底色 */
             --border-color: #e3ded6;      /* 柔和邊框線 */
             --transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
             /* 傳統明體 / 白體襯線字型設定 */
@@ -21,7 +29,7 @@
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: var(--font-serif); /* 全站改用明體/白體襯線字 */
+            font-family: var(--font-serif);
             -webkit-font-smoothing: antialiased;
         }
 
@@ -49,7 +57,7 @@
             flex-direction: column;
         }
 
-        /* 頂部固定品牌與滑動選單區塊 */
+        /* 頂部固定區塊 */
         .top-nav-sticky {
             position: sticky;
             top: 0;
@@ -68,27 +76,29 @@
             margin-bottom: 12px;
         }
 
-        /* 橫向可滑動選單 */
+        /* 橫向 Tab 選單 (首頁預設隱藏) */
         .nav-tabs-scroll {
-            display: flex;
+            display: none; /* 由 JS 控制在內頁才顯示 */
             overflow-x: auto;
             white-space: nowrap;
-            padding: 0 16px 12px 16px;
-            gap: 8px;
+            padding: 0 16px 14px 16px;
+            gap: 6px;
             -webkit-overflow-scrolling: touch;
             scrollbar-width: none;
+            align-items: center;
         }
 
         .nav-tabs-scroll::-webkit-scrollbar {
             display: none;
         }
 
+        /* 極簡風格 Tab：無外框、選中時才出現圓角背景 */
         .tab-btn {
-            background: #faf8f5;
-            border: 1px solid var(--border-color);
+            background: transparent;
+            border: 1px solid transparent;
             border-radius: 20px;
             padding: 6px 14px;
-            font-size: 13.5px;
+            font-size: 14px;
             color: var(--text-secondary);
             cursor: pointer;
             transition: var(--transition);
@@ -96,10 +106,12 @@
             font-weight: 500;
         }
 
-        .tab-btn.active, .tab-btn:hover {
-            background: var(--text-primary);
-            color: #ffffff;
-            border-color: var(--text-primary);
+        /* 僅在該頁時顯示圓框與輕微底色 */
+        .tab-btn.active {
+            background-color: var(--tab-active-bg);
+            border-color: #d8cebe;
+            color: var(--text-primary);
+            font-weight: 600;
         }
 
         /* 頁面基本設置 */
@@ -169,8 +181,10 @@
             justify-content: space-between;
         }
 
+        /* 空心箭頭風格 */
         .menu-item span {
             color: var(--text-secondary);
+            font-weight: normal;
             transition: var(--transition);
         }
 
@@ -286,7 +300,7 @@
             background-color: var(--accent);
         }
 
-        /* 下拉式選單 (Accordion) - 改為空心箭頭 ﹀ / ︿ */
+        /* FAQ 下拉選單 - 空心箭頭 ﹀ / ︿ */
         .accordion-item {
             border: 1px solid var(--border-color);
             border-radius: 12px;
@@ -311,7 +325,6 @@
             align-items: center;
         }
 
-        /* 預設為向下空心箭頭 ﹀ */
         .accordion-header::after {
             content: '﹀';
             font-size: 13px;
@@ -320,7 +333,6 @@
             transition: var(--transition);
         }
 
-        /* 展開時切換為向上空心箭頭 ︿ */
         .accordion-item.active .accordion-header::after {
             content: '︿';
         }
@@ -340,35 +352,28 @@
             transition: max-height 0.4s ease-in;
         }
 
-        /* 置中返回按鈕 */
+        /* 頁尾「返回主選單」：無外框極簡設計 */
         .page-footer-nav {
-            margin-top: 36px;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            margin-top: 40px;
+            text-align: center;
         }
 
         .back-btn-bottom {
             background: none;
-            border: 1px solid var(--border-color);
-            border-radius: 980px;
-            padding: 8px 24px;
-            font-size: 13px;
+            border: none;
+            padding: 8px 16px;
+            font-size: 13.5px;
             font-weight: 500;
             color: var(--text-secondary);
             cursor: pointer;
             transition: var(--transition);
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto;
+            display: inline-block;
+            letter-spacing: 0.03em;
         }
 
         .back-btn-bottom:hover {
-            background-color: #f2eee9;
             color: var(--text-primary);
-            border-color: var(--text-secondary);
+            text-decoration: underline;
         }
 
         /* 結語頁設計 */
@@ -423,23 +428,6 @@
         .action-link-btn:hover {
             background-color: var(--accent);
         }
-
-        .action-btn {
-            background-color: var(--text-primary);
-            color: white;
-            border: none;
-            border-radius: 980px;
-            padding: 12px 28px;
-            font-size: 14px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: var(--transition);
-            margin-top: 24px;
-        }
-
-        .action-btn:hover {
-            background-color: var(--accent);
-        }
     </style>
 </head>
 <body>
@@ -449,8 +437,7 @@
     <!-- 頂部固定區塊：品牌名稱 + 橫向滑動選單 -->
     <div class="top-nav-sticky">
         <div class="brand-header">代你飛 ✈️</div>
-        <div class="nav-tabs-scroll">
-            <button class="tab-btn active" onclick="showPage('home')">首頁</button>
+        <div id="navTabs" class="nav-tabs-scroll">
             <button class="tab-btn" onclick="showPage('page1')">服務簡介</button>
             <button class="tab-btn" onclick="showPage('page2')">流程規範</button>
             <button class="tab-btn" onclick="showPage('page3')">運費收費</button>
@@ -460,7 +447,7 @@
         </div>
     </div>
 
-    <!-- 首頁 -->
+    <!-- 首頁 (頁尾不放置重複的 Tab) -->
     <div id="home" class="page active">
         <div class="home-header">
             <h1>代你飛使用手冊</h1>
@@ -471,12 +458,12 @@
         </div>
         
         <div class="menu-list">
-            <button class="menu-item" onclick="showPage('page1')">👋 歡迎加入（服務簡介） <span>➔</span></button>
-            <button class="menu-item" onclick="showPage('page2')">📦 代購流程與規範 <span>➔</span></button>
-            <button class="menu-item" onclick="showPage('page3')">💰 運費與收費方式 <span>➔</span></button>
-            <button class="menu-item" onclick="showPage('page4')">❓ 常見問題 FAQ <span>➔</span></button>
-            <button class="menu-item" onclick="showPage('page5')">🔥 最新活動情報 <span>➔</span></button>
-            <button class="menu-item special" onclick="showPage('page6')">💛 寫在最後的真心話 <span>➔</span></button>
+            <button class="menu-item" onclick="showPage('page1')">👋 歡迎加入（服務簡介） <span>＞</span></button>
+            <button class="menu-item" onclick="showPage('page2')">📦 代購流程與規範 <span>＞</span></button>
+            <button class="menu-item" onclick="showPage('page3')">💰 運費與收費方式 <span>＞</span></button>
+            <button class="menu-item" onclick="showPage('page4')">❓ 常見問題 FAQ <span>＞</span></button>
+            <button class="menu-item" onclick="showPage('page5')">🔥 最新活動情報 <span>＞</span></button>
+            <button class="menu-item special" onclick="showPage('page6')">💛 寫在最後的真心話 <span>＞</span></button>
         </div>
     </div>
 
@@ -500,7 +487,7 @@
             </ul>
         </div>
         <div class="page-footer-nav">
-            <button class="back-btn-bottom" onclick="showPage('home')">〈 返回主選單</button>
+            <button class="back-btn-bottom" onclick="showPage('home')">＜ 返回主選單</button>
         </div>
     </div>
 
@@ -528,7 +515,7 @@
             </ul>
         </div>
         <div class="page-footer-nav">
-            <button class="back-btn-bottom" onclick="showPage('home')">〈 返回主選單</button>
+            <button class="back-btn-bottom" onclick="showPage('home')">＜ 返回主選單</button>
         </div>
     </div>
 
@@ -574,7 +561,7 @@
             <p><strong>運費說明：</strong>台灣國內運費另計，商品一抵台會盡快為您寄出。</p>
         </div>
         <div class="page-footer-nav">
-            <button class="back-btn-bottom" onclick="showPage('home')">〈 返回主選單</button>
+            <button class="back-btn-bottom" onclick="showPage('home')">＜ 返回主選單</button>
         </div>
     </div>
 
@@ -623,7 +610,7 @@
 
         </div>
         <div class="page-footer-nav">
-            <button class="back-btn-bottom" onclick="showPage('home')">〈 返回主選單</button>
+            <button class="back-btn-bottom" onclick="showPage('home')">＜ 返回主選單</button>
         </div>
     </div>
 
@@ -639,7 +626,7 @@
             <p style="color: var(--text-secondary); font-size: 13px; margin-top: 24px; font-style: italic; border-top: 1px dashed var(--border-color); padding-top: 14px;">(本區塊將隨最新活動定期更新)<br>※ 本代購團隊保有活動內容最終解釋與修改之權利。</p>
         </div>
         <div class="page-footer-nav">
-            <button class="back-btn-bottom" onclick="showPage('home')">〈 返回主選單</button>
+            <button class="back-btn-bottom" onclick="showPage('home')">＜ 返回主選單</button>
         </div>
     </div>
 
@@ -668,7 +655,7 @@
         </div>
 
         <div class="page-footer-nav">
-            <button class="back-btn-bottom" onclick="showPage('home')">〈 返回主選單</button>
+            <button class="back-btn-bottom" onclick="showPage('home')">＜ 返回主選單</button>
         </div>
     </div>
 
@@ -676,12 +663,11 @@
 
 <script>
     function showPage(pageId) {
-        // 切換頁面
+        // 隱藏所有頁面
         const pages = document.querySelectorAll('.page');
-        pages.forEach(page => {
-            page.classList.remove('active');
-        });
+        pages.forEach(page => page.classList.remove('active'));
 
+        // 顯示目標頁面
         const targetPage = document.getElementById(pageId);
         if (targetPage) {
             setTimeout(() => {
@@ -690,15 +676,22 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // 同步切換頂部滑動 Tab 的高亮狀態
-        const tabs = document.querySelectorAll('.tab-btn');
-        tabs.forEach(tab => {
-            tab.classList.remove('active');
-            if (tab.getAttribute('onclick').includes(pageId)) {
-                tab.classList.add('active');
-                tab.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
-            }
-        });
+        // 頂部 Tab 顯示邏輯：首頁隱藏，內頁顯示並切換膠囊高亮
+        const navTabs = document.getElementById('navTabs');
+        if (pageId === 'home') {
+            navTabs.style.display = 'none';
+        } else {
+            navTabs.style.display = 'flex';
+            
+            const tabs = document.querySelectorAll('.tab-btn');
+            tabs.forEach(tab => {
+                tab.classList.remove('active');
+                if (tab.getAttribute('onclick').includes(pageId)) {
+                    tab.classList.add('active');
+                    tab.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+                }
+            });
+        }
     }
 
     // 帳號複製功能
@@ -714,16 +707,10 @@
         });
     }
 
-    // 常見問題開合控制（符號切換為 ︿ / ﹀）
+    // 常見問題開合控制
     function toggleAccordion(header) {
         const item = header.parentElement;
-        const isActive = item.classList.contains('active');
-
-        if (!isActive) {
-            item.classList.add('active');
-        } else {
-            item.classList.remove('active');
-        }
+        item.classList.toggle('active');
     }
 </script>
 
