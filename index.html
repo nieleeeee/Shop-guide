@@ -3,35 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>專業代購服務指南</title>
+    <title>代你飛 | 專業代購服務指南</title>
     <style>
         :root {
             --bg-color: #f7f4ed;          /* 燕麥奶茶色背景 */
             --card-bg: #ffffff;           /* 卡片純白底 */
-            --text-primary: #3a3532;      /* 深褐灰色字，柔和不刺眼 */
+            --text-primary: #3a3532;      /* 深褐灰色字 */
             --text-secondary: #8c837c;    /* 次要文字色 */
             --accent: #736357;            /* 溫潤可可色 */
             --border-color: #e3ded6;      /* 柔和邊框線 */
-            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            --transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            /* 傳統明體 / 白體襯線字型設定 */
+            --font-serif: "Songti TC", "Noto Serif CJK TC", "MingLiU", "PMingLiU", "Yu Mincho", "YuMincho", "Hiragino Mincho ProN", serif;
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Hiragino Sans TC", "Microsoft JhengHei", sans-serif;
+            font-family: var(--font-serif); /* 全站改用明體/白體襯線字 */
             -webkit-font-smoothing: antialiased;
         }
 
         body {
             background-color: var(--bg-color);
             color: var(--text-primary);
-            line-height: 1.8;
+            line-height: 1.85;
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: flex-start;
             min-height: 100vh;
-            padding: 24px;
+            padding: 24px 16px;
         }
 
         .container {
@@ -43,52 +45,106 @@
             overflow: hidden;
             transition: var(--transition);
             border: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
         }
 
+        /* 頂部固定品牌與滑動選單區塊 */
+        .top-nav-sticky {
+            position: sticky;
+            top: 0;
+            background: #ffffff;
+            z-index: 100;
+            border-bottom: 1px solid var(--border-color);
+            padding-top: 16px;
+        }
+
+        .brand-header {
+            text-align: center;
+            font-size: 19px;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+        }
+
+        /* 橫向可滑動選單 */
+        .nav-tabs-scroll {
+            display: flex;
+            overflow-x: auto;
+            white-space: nowrap;
+            padding: 0 16px 12px 16px;
+            gap: 8px;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+        }
+
+        .nav-tabs-scroll::-webkit-scrollbar {
+            display: none;
+        }
+
+        .tab-btn {
+            background: #faf8f5;
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 6px 14px;
+            font-size: 13.5px;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: var(--transition);
+            flex-shrink: 0;
+            font-weight: 500;
+        }
+
+        .tab-btn.active, .tab-btn:hover {
+            background: var(--text-primary);
+            color: #ffffff;
+            border-color: var(--text-primary);
+        }
+
+        /* 頁面基本設置 */
         .page {
             display: none;
-            padding: 48px 36px 64px 36px;
+            padding: 32px 28px 48px 28px;
             opacity: 0;
-            transform: translateY(12px) scale(0.99);
+            transform: translateY(10px);
             transition: var(--transition);
         }
 
         .page.active {
             display: block;
             opacity: 1;
-            transform: translateY(0) scale(1);
+            transform: translateY(0);
         }
 
         /* 首頁設計 */
         .home-header {
             text-align: center;
-            margin-bottom: 24px;
+            margin-bottom: 20px;
         }
 
         .home-header h1 {
             font-size: 24px;
             font-weight: 600;
-            letter-spacing: 0.05em;
+            letter-spacing: 0.08em;
             color: var(--text-primary);
-            margin-bottom: 6px;
+            margin-bottom: 4px;
         }
 
         .home-header p {
-            color: var(--text-secondary);
-            font-size: 14px;
+            font-size: 18px;
         }
 
-        /* 虛線框設計 (對應日式美學質感) */
         .sub-intro {
             font-size: 14px;
             color: #59524c;
             background: #faf8f5;
             border: 1.5px dashed var(--border-color);
-            padding: 18px;
+            padding: 20px;
             border-radius: 12px;
             text-align: left;
-            margin-bottom: 28px;
-            line-height: 1.8;
+            margin-bottom: 24px;
+            line-height: 1.85;
         }
 
         .menu-list {
@@ -103,7 +159,7 @@
             border-radius: 12px;
             padding: 18px 20px;
             font-size: 15px;
-            font-weight: 500;
+            font-weight: 600;
             color: var(--text-primary);
             text-align: left;
             cursor: pointer;
@@ -121,19 +177,8 @@
         .menu-item:hover {
             background-color: #f2eee9;
             border-color: #c7beb4;
-            transform: scale(1.01);
         }
 
-        .menu-item:hover span {
-            color: var(--text-primary);
-            transform: translateX(3px);
-        }
-
-        .menu-item:active {
-            transform: scale(0.98);
-        }
-
-        /* 結語按鈕獨立特色 */
         .menu-item.special {
             background: linear-gradient(135deg, #f5f0eb, #ebe3db);
             border: 1.5px dashed #c7beb4;
@@ -141,11 +186,11 @@
             margin-top: 4px;
         }
 
-        /* 內頁設計 */
+        /* 內頁標題 */
         .page-header {
             text-align: center;
-            margin-bottom: 28px;
-            padding-bottom: 16px;
+            margin-bottom: 24px;
+            padding-bottom: 14px;
             border-bottom: 1px solid var(--border-color);
         }
 
@@ -153,21 +198,22 @@
             font-size: 19px;
             font-weight: 600;
             color: var(--text-primary);
-            letter-spacing: 0.03em;
+            letter-spacing: 0.05em;
         }
 
         .content-body {
-            font-size: 15px;
+            font-size: 14.5px;
             color: #4a4440;
-            line-height: 1.8;
+            line-height: 1.85;
         }
 
         .content-body h3 {
-            margin-top: 28px;
+            margin-top: 24px;
             margin-bottom: 10px;
             color: var(--text-primary);
-            font-size: 17px;
+            font-size: 16.5px;
             font-weight: 600;
+            letter-spacing: 0.03em;
         }
 
         .content-body p {
@@ -181,15 +227,14 @@
 
         .content-body li {
             margin-bottom: 8px;
-            color: #4a4440;
         }
 
-        /* 價格表格專用樣式 */
+        /* 價格表格 */
         .price-table {
             width: 100%;
             border-collapse: collapse;
-            margin: 20px 0;
-            font-size: 14px;
+            margin: 18px 0;
+            font-size: 13.5px;
             background: #faf8f5;
             border-radius: 10px;
             overflow: hidden;
@@ -212,7 +257,7 @@
             border-bottom: none;
         }
 
-        /* 複製帳號按鈕樣式 */
+        /* 複製帳號按鈕 */
         .copy-box {
             display: flex;
             align-items: center;
@@ -241,7 +286,7 @@
             background-color: var(--accent);
         }
 
-        /* 下拉式選單 (Accordion) 樣式 */
+        /* 下拉式選單 (Accordion) - 改為空心箭頭 ﹀ / ︿ */
         .accordion-item {
             border: 1px solid var(--border-color);
             border-radius: 12px;
@@ -266,15 +311,18 @@
             align-items: center;
         }
 
+        /* 預設為向下空心箭頭 ﹀ */
         .accordion-header::after {
-            content: '+';
-            font-size: 18px;
+            content: '﹀';
+            font-size: 13px;
+            font-weight: bold;
             color: var(--text-secondary);
             transition: var(--transition);
         }
 
+        /* 展開時切換為向上空心箭頭 ︿ */
         .accordion-item.active .accordion-header::after {
-            transform: rotate(45deg);
+            content: '︿';
         }
 
         .accordion-body {
@@ -292,24 +340,29 @@
             transition: max-height 0.4s ease-in;
         }
 
-        /* 底部返回按鈕區塊 */
+        /* 置中返回按鈕 */
         .page-footer-nav {
             margin-top: 36px;
-            text-align: center;
+            width: 100%;
             display: flex;
             justify-content: center;
+            align-items: center;
         }
 
         .back-btn-bottom {
             background: none;
             border: 1px solid var(--border-color);
             border-radius: 980px;
-            padding: 8px 22px;
+            padding: 8px 24px;
             font-size: 13px;
             font-weight: 500;
             color: var(--text-secondary);
             cursor: pointer;
             transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
         }
 
         .back-btn-bottom:hover {
@@ -321,19 +374,18 @@
         /* 結語頁設計 */
         .outro-page {
             text-align: center;
-            padding: 10px 10px 30px 10px;
         }
 
         .outro-page h2 {
-            font-size: 22px;
+            font-size: 21px;
             font-weight: 600;
             color: var(--text-primary);
             margin-bottom: 18px;
-            letter-spacing: 0.03em;
+            letter-spacing: 0.05em;
         }
 
         .outro-page p {
-            margin-bottom: 20px;
+            margin-bottom: 18px;
             color: #4a4440;
             font-size: 14.5px;
             line-height: 1.85;
@@ -341,18 +393,18 @@
         }
 
         .outro-action-box {
-            margin-top: 28px;
+            margin-top: 32px;
             background: #faf8f5;
-            border: 1px solid var(--border-color);
-            padding: 18px;
-            border-radius: 12px;
+            border: 1.5px dashed var(--border-color);
+            padding: 26px 20px;
+            border-radius: 16px;
         }
 
         .action-links {
             display: flex;
             flex-direction: column;
-            gap: 10px;
-            margin-top: 14px;
+            gap: 12px;
+            margin-top: 18px;
         }
 
         .action-link-btn {
@@ -370,7 +422,6 @@
 
         .action-link-btn:hover {
             background-color: var(--accent);
-            transform: scale(1.02);
         }
 
         .action-btn {
@@ -388,7 +439,6 @@
 
         .action-btn:hover {
             background-color: var(--accent);
-            transform: scale(1.02);
         }
     </style>
 </head>
@@ -396,10 +446,24 @@
 
 <div class="container">
 
+    <!-- 頂部固定區塊：品牌名稱 + 橫向滑動選單 -->
+    <div class="top-nav-sticky">
+        <div class="brand-header">代你飛 ✈️</div>
+        <div class="nav-tabs-scroll">
+            <button class="tab-btn active" onclick="showPage('home')">首頁</button>
+            <button class="tab-btn" onclick="showPage('page1')">服務簡介</button>
+            <button class="tab-btn" onclick="showPage('page2')">流程規範</button>
+            <button class="tab-btn" onclick="showPage('page3')">運費收費</button>
+            <button class="tab-btn" onclick="showPage('page4')">常見問題</button>
+            <button class="tab-btn" onclick="showPage('page5')">最新活動</button>
+            <button class="tab-btn" onclick="showPage('page6')">真心話 💛</button>
+        </div>
+    </div>
+
     <!-- 首頁 -->
     <div id="home" class="page active">
         <div class="home-header">
-            <h1>✈️ 代你飛使用手冊</h1>
+            <h1>代你飛使用手冊</h1>
             <p>💌</p>
         </div>
         <div class="sub-intro">
@@ -572,7 +636,7 @@
             <h3>🎉 當前熱門活動</h3>
             <p><strong>預告檔期：</strong>88父親節、雙 11 購物節專屬優惠準備中！</p>
             <p>更多限時快閃與連線折扣，請關注我們的 <strong>IG 限時動態</strong> 與 <strong>LINE 社群</strong> 訊息。</p>
-            <p style="color: var(--text-secondary); font-size: 13px; margin-top: 24px; font-style: italic; border-top: 1px dashed var(--border-color); paddingTop: 14px;">(本區塊將隨最新活動定期更新)<br>※ 本代購團隊保有活動內容最終解釋與修改之權利。</p>
+            <p style="color: var(--text-secondary); font-size: 13px; margin-top: 24px; font-style: italic; border-top: 1px dashed var(--border-color); padding-top: 14px;">(本區塊將隨最新活動定期更新)<br>※ 本代購團隊保有活動內容最終解釋與修改之權利。</p>
         </div>
         <div class="page-footer-nav">
             <button class="back-btn-bottom" onclick="showPage('home')">〈 返回主選單</button>
@@ -581,14 +645,11 @@
 
     <!-- 6. 結語頁 -->
     <div id="page6" class="page outro-page">
-        <div class="page-header" style="border-bottom: none; margin-bottom: 20px; padding-bottom: 0;">
-            <div class="page-title" style="display: none;">結語</div>
-        </div>
         <h2>💛 寫在最後的真心話</h2>
         
         <p>「獨樂樂不如眾樂樂」看到你們收到包裹的喜悅，就是我們持續的動力。</p>
         
-        <p>一路走來，我們發現做代購慢慢變成了一件非常純粹的興趣。雖然現在人民幣匯率上漲、代購換回台幣其實我們未必划算，但每次幫大家「挖到寶藏」的過程，真的很有成就感又好玩！我們熱愛分享，喜歡跟大家一起變漂亮、讓生活變得更便利。</p>
+        <p>一路走來，我們發現做代購慢慢變成了一件非常純粹的興趣。雖然現在人民幣匯率上漲、代購換回台幣其實我們未必劃算，但每次幫大家「挖到寶藏」的過程，真的很有成就感又好玩！我們熱愛分享，喜歡跟大家一起變漂亮、讓生活變得更便利。</p>
         
         <p>不過，我們的人生規劃裡並沒有打算在中國待到退休，所以——能幫大家撿便宜、挖寶的日子，且看且珍惜，把握當下最重要！ 😉</p>
         
@@ -597,8 +658,8 @@
         <p>生活已經夠忙碌了，喜歡的東西就放心交給我們，讓我們陪你一起把生活過成你理想中的樣子。✨</p>
 
         <div class="outro-action-box">
-            <p style="text-align: center; font-weight: 600; margin-bottom: 10px;">🎁 準備好跟我們一起挖寶了嗎？</p>
-            <p style="text-align: center; font-size: 13px; color: var(--text-secondary); margin-bottom: 14px;">點擊下方連結立即開始尋寶，請確認已詳閱購物規範，下單即視為同意規定喔！</p>
+            <p style="text-align: center; font-weight: 600; margin-bottom: 8px;">🎁 準備好跟我們一起挖寶了嗎？</p>
+            <p style="text-align: center; font-size: 13px; color: var(--text-secondary); margin-bottom: 16px;">點擊下方連結立即開始尋寶，請確認已詳閱購物規範，下單即視為同意規定喔！</p>
             <div class="action-links">
                 <a href="https://line.me" target="_blank" class="action-link-btn">💬 私訊 LINE 客服</a>
                 <a href="https://www.instagram.com/blue_nie/" target="_blank" class="action-link-btn" style="background-color: #a67c65;">🔗 逛逛 IG 精選動態 (blue_nie)</a>
@@ -606,13 +667,16 @@
             </div>
         </div>
 
-        <button class="action-btn" onclick="showPage('home')">返回首頁選單</button>
+        <div class="page-footer-nav">
+            <button class="back-btn-bottom" onclick="showPage('home')">〈 返回主選單</button>
+        </div>
     </div>
 
 </div>
 
 <script>
     function showPage(pageId) {
+        // 切換頁面
         const pages = document.querySelectorAll('.page');
         pages.forEach(page => {
             page.classList.remove('active');
@@ -622,9 +686,19 @@
         if (targetPage) {
             setTimeout(() => {
                 targetPage.classList.add('active');
-            }, 50);
+            }, 30);
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
+
+        // 同步切換頂部滑動 Tab 的高亮狀態
+        const tabs = document.querySelectorAll('.tab-btn');
+        tabs.forEach(tab => {
+            tab.classList.remove('active');
+            if (tab.getAttribute('onclick').includes(pageId)) {
+                tab.classList.add('active');
+                tab.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+            }
+        });
     }
 
     // 帳號複製功能
@@ -640,7 +714,7 @@
         });
     }
 
-    // 常見問題下拉選單開合控制
+    // 常見問題開合控制（符號切換為 ︿ / ﹀）
     function toggleAccordion(header) {
         const item = header.parentElement;
         const isActive = item.classList.contains('active');
