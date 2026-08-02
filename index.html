@@ -17,7 +17,7 @@
             --card-bg: #ffffff;           /* 卡片純白底 */
             --text-primary: #3a3532;      /* 深褐灰色字 */
             --text-secondary: #8c837c;    /* 次要文字色 */
-            --accent: #736357;            /* 溫潤可可色 */
+            --accent: #736357;            /* 溫潤可可色 (用於粗豎線與重點) */
             --tab-active-bg: #eae3d9;     /* 选中 Tab 的奶茶色膠囊底色 */
             --border-color: #e3ded6;      /* 柔和邊框線 */
             --transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
@@ -132,7 +132,7 @@
         /* 首頁設計 */
         .home-header {
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 12px;
         }
 
         .home-header h1 {
@@ -140,23 +140,22 @@
             font-weight: 600;
             letter-spacing: 0.08em;
             color: var(--text-primary);
-            margin-bottom: 4px;
         }
 
-        .home-header p {
-            font-size: 18px;
-        }
-
+        /* 首頁內文：無框線、文字置中、💌 在第一行 */
         .sub-intro {
             font-size: 14px;
             color: #59524c;
-            background: #faf8f5;
-            border: 1.5px dashed var(--border-color);
-            padding: 20px;
-            border-radius: 12px;
-            text-align: left;
-            margin-bottom: 24px;
-            line-height: 1.85;
+            text-align: center;
+            margin-bottom: 28px;
+            line-height: 1.9;
+            padding: 0 8px;
+        }
+
+        .sub-intro .emoji-heart {
+            font-size: 20px;
+            display: block;
+            margin-bottom: 8px;
         }
 
         .menu-list {
@@ -221,13 +220,26 @@
             line-height: 1.85;
         }
 
+        /* 內頁副標題：前面加上質感粗豎線｜ */
         .content-body h3 {
             margin-top: 24px;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
             color: var(--text-primary);
             font-size: 16.5px;
             font-weight: 600;
             letter-spacing: 0.03em;
+            display: flex;
+            align-items: center;
+        }
+
+        .content-body h3::before {
+            content: '';
+            display: inline-block;
+            width: 4px;
+            height: 16px;
+            background-color: var(--accent);
+            margin-right: 10px;
+            border-radius: 2px;
         }
 
         .content-body p {
@@ -243,11 +255,19 @@
             margin-bottom: 8px;
         }
 
+        /* 提示文字（灰色小字） */
+        .notice-text {
+            color: var(--text-secondary);
+            font-size: 12.5px;
+            margin-top: 6px;
+            margin-bottom: 16px;
+        }
+
         /* 價格表格 */
         .price-table {
             width: 100%;
             border-collapse: collapse;
-            margin: 18px 0;
+            margin: 18px 0 12px 0;
             font-size: 13.5px;
             background: #faf8f5;
             border-radius: 10px;
@@ -281,7 +301,7 @@
             padding: 12px 16px;
             border-radius: 10px;
             margin-top: 8px;
-            margin-bottom: 16px;
+            margin-bottom: 4px;
         }
 
         .copy-btn {
@@ -300,7 +320,7 @@
             background-color: var(--accent);
         }
 
-        /* FAQ 下拉選單 - 空心箭頭 ﹀ / ︿ */
+        /* FAQ & 連線注意事項 下拉選單 - 空心箭頭 ﹀ / ︿ */
         .accordion-item {
             border: 1px solid var(--border-color);
             border-radius: 12px;
@@ -352,6 +372,12 @@
             transition: max-height 0.4s ease-in;
         }
 
+        .accordion-body ul {
+            padding-left: 18px;
+            margin-bottom: 0;
+            margin-top: 8px;
+        }
+
         /* 頁尾「返回主選單」：無外框極簡設計 */
         .page-footer-nav {
             margin-top: 40px;
@@ -376,7 +402,7 @@
             text-decoration: underline;
         }
 
-        /* 結語頁設計 */
+        /* 結語頁 & 按鈕區塊設計 */
         .outro-page {
             text-align: center;
         }
@@ -447,22 +473,22 @@
         </div>
     </div>
 
-    <!-- 首頁 (頁尾不放置重複的 Tab) -->
+    <!-- 首頁 -->
     <div id="home" class="page active">
         <div class="home-header">
             <h1>使用手冊</h1>
         </div>
         <div class="sub-intro">
-            <p>💌</p>
+            <span class="emoji-heart">💌</span>
             起初只是為了方便換匯跟清零卡費，順便滿足自己「愛買又愛分享」的心態（笑）。沒想到一路走來，變成了一個大家一起挖寶的小天地！希望大家都能在這裡用最合理的價格，買到實用的好東西🫶
         </div>
         
         <div class="menu-list">
-            <button class="menu-item" onclick="showPage('page1')">👋 歡迎加入（服務簡介） <span>＞</span></button>
-            <button class="menu-item" onclick="showPage('page2')">📦 代購流程與規範 <span>＞</span></button>
-            <button class="menu-item" onclick="showPage('page3')">💰 運費與收費方式 <span>＞</span></button>
-            <button class="menu-item" onclick="showPage('page4')">❓ 常見問題 FAQ <span>＞</span></button>
-            <button class="menu-item" onclick="showPage('page5')">🔥 最新活動情報 <span>＞</span></button>
+            <button class="menu-item" onclick="showPage('page1')">歡迎加入（服務簡介） <span>＞</span></button>
+            <button class="menu-item" onclick="showPage('page2')">代購流程與規範 <span>＞</span></button>
+            <button class="menu-item" onclick="showPage('page3')">運費與收費方式 <span>＞</span></button>
+            <button class="menu-item" onclick="showPage('page4')">常見問題 FAQ <span>＞</span></button>
+            <button class="menu-item" onclick="showPage('page5')">最新活動情報 <span>＞</span></button>
             <button class="menu-item special" onclick="showPage('page6')">💛 寫在最後的真心話 <span>＞</span></button>
         </div>
     </div>
@@ -470,16 +496,16 @@
     <!-- 1. 歡迎加入 -->
     <div id="page1" class="page">
         <div class="page-header">
-            <div class="page-title">👋 歡迎加入（服務簡介）</div>
+            <div class="page-title">歡迎加入（服務簡介）</div>
         </div>
         <div class="content-body">
-            <h3>🛒 我們能幫你找什麼？</h3>
+            <h3>我們能幫你找什麼？</h3>
             <p>淘寶 / 拼多多 / 小紅書 / 國內外在地品牌，只要你想買的，我們都能幫忙找！</p>
             <ul>
                 <li><strong>100% 誠實告知：</strong>全程協助把關商品品質與是否為正品，降低踩雷機率。</li>
                 <li><strong>嚴選推薦：</strong>多數商品皆為我們實際使用過才分享推薦。</li>
             </ul>
-            <h3>💡 貼心小提醒</h3>
+            <h3>貼心小提醒</h3>
             <ul>
                 <li><strong>新手挖寶：</strong>第一次來的寶寶們，可以先到我們的 IG 精選動態逛逛看歷年熱銷品項。</li>
                 <li><strong>關閉通知：</strong>我們不定時上新，建議先關閉社群通知才不會吵到大家，有空時再來隨心逛逛就好！</li>
@@ -494,25 +520,32 @@
     <!-- 2. 代購流程 -->
     <div id="page2" class="page">
         <div class="page-header">
-            <div class="page-title">📦 代購流程與規範</div>
+            <div class="page-title">代購流程與規範</div>
         </div>
         <div class="content-body">
-            <h3>🛍️ 一般預購代購</h3>
+            <h3>一般預購代購</h3>
             <p><strong>私訊詢問 ➡️ 確認報價與付款 ➡️ 安心等候收貨</strong></p>
             <ul>
                 <li><strong>客服回覆：</strong>若超過一天未收到回覆，可能是訊息被系統吃掉，請直接 @我們一次 提醒喔！</li>
                 <li><strong>討論串功能：</strong>為維護社群版面整潔，有任何疑問請善用「討論串」功能提問。</li>
             </ul>
             
-            <h3>⚡ 限時連線代購</h3>
+            <h3>限時連線代購</h3>
             <p><strong>限時連線選購 ➡️ 私訊下單 ➡️ 連線結束 ➡️ 統一通知付款</strong></p>
-            <h3>⚠️ 連線特別注意事項：</h3>
-            <ul>
-                <li><strong>即時選購、不接急單：</strong>數量有限，若售罄會另行通知。</li>
-                <li><strong>均一價計費：</strong>依購買當下匯率為準，下單後不因後續匯率或價格波動調整/退款。</li>
-                <li><strong>禁止棄單：</strong>連線商品皆為代墊款，未於期限內完成付款視同棄單，將直接列入黑名單。</li>
-                <li><strong>活動限制：</strong>連線活動不適用於平時代購的滿額禮或額外折扣。</li>
-            </ul>
+
+            <!-- 連線注意事項改成下拉式選單 -->
+            <div class="accordion-item" style="margin-top: 18px;">
+                <button class="accordion-header" onclick="toggleAccordion(this)">⚠️ 連線特別注意事項</button>
+                <div class="accordion-body">
+                    <ul>
+                        <li><strong>即時選購、不接急單：</strong>數量有限，若售罄會另行通知。</li>
+                        <li><strong>均一價計費：</strong>依購買當下匯率為準，下單後不因後續匯率或價格波動調整/退款。</li>
+                        <li><strong>禁止棄單：</strong>連線商品皆為代墊款，未於期限內完成付款視同棄單，將直接列入黑名單。</li>
+                        <li><strong>活動限制：</strong>連線活動不適用於平時代購的滿額禮或額外折扣。</li>
+                    </ul>
+                </div>
+            </div>
+
         </div>
         <div class="page-footer-nav">
             <button class="back-btn-bottom" onclick="showPage('home')">＜ 返回主選單</button>
@@ -522,10 +555,10 @@
     <!-- 3. 運費與收費方式 -->
     <div id="page3" class="page">
         <div class="page-header">
-            <div class="page-title">💰 運費與收費方式</div>
+            <div class="page-title">運費與收費方式</div>
         </div>
         <div class="content-body">
-            <h3>💰 單品代購服務費計費表（RMB）</h3>
+            <h3>單品代購服務費計費表（RMB）</h3>
             <table class="price-table">
                 <thead>
                     <tr>
@@ -549,7 +582,7 @@
                 </tbody>
             </table>
 
-            <h3>💳 付款方式：匯款</h3>
+            <h3>付款方式：匯款</h3>
             <ul>
                 <li><strong>指定銀行：</strong>國泰世華銀行 (013)</li>
             </ul>
@@ -558,7 +591,11 @@
                 <span id="bankAccount" style="font-family: monospace; font-size: 16px; font-weight: 600;">214506230438</span>
                 <button class="copy-btn" onclick="copyAccount()">複製帳號</button>
             </div>
-            <p><strong>運費說明：</strong>台灣國內運費另計，商品一抵台會盡快為您寄出。</p>
+            <p class="notice-text">※ 務必留意詐騙廣告</p>
+
+            <h3>運費說明</h3>
+            <p>台灣國內運費另計，商品一抵台會盡快為您寄出。</p>
+            <p class="notice-text">※ 請確認已詳閱購物規範，下單即視為同意所有規範！</p>
         </div>
         <div class="page-footer-nav">
             <button class="back-btn-bottom" onclick="showPage('home')">＜ 返回主選單</button>
@@ -568,7 +605,7 @@
     <!-- 4. 常見問題 -->
     <div id="page4" class="page">
         <div class="page-header">
-            <div class="page-title">❓ 常見問題 FAQ</div>
+            <div class="page-title">常見問題 FAQ</div>
         </div>
         <div class="content-body">
             
@@ -617,12 +654,18 @@
     <!-- 5. 最新活動 -->
     <div id="page5" class="page">
         <div class="page-header">
-            <div class="page-title">🔥 最新活動情報</div>
+            <div class="page-title">最新活動情報</div>
         </div>
         <div class="content-body">
-            <h3>🎉 當前熱門活動</h3>
+            <h3>當前熱門活動</h3>
             <p><strong>預告檔期：</strong>88父親節、雙 11 購物節專屬優惠準備中！</p>
             <p>更多限時快閃與連線折扣，請關注我們的 <strong>IG 限時動態</strong> 與 <strong>LINE 社群</strong> 訊息。</p>
+            
+            <div class="action-links" style="margin-top: 24px;">
+                <a href="https://www.instagram.com/blue_nie/" target="_blank" class="action-link-btn" style="background-color: #a67c65;">🔗 逛逛 IG 精選動態 (blue_nie)</a>
+                <a href="https://www.instagram.com/ashhhh94/" target="_blank" class="action-link-btn" style="background-color: #a67c65;">🔗 逛逛 IG 精選動態 (ashhhh94)</a>
+            </div>
+
             <p style="color: var(--text-secondary); font-size: 13px; margin-top: 24px; font-style: italic; border-top: 1px dashed var(--border-color); padding-top: 14px;">(本區塊將隨最新活動定期更新)<br>※ 本代購團隊保有活動內容最終解釋與修改之權利。</p>
         </div>
         <div class="page-footer-nav">
@@ -646,7 +689,7 @@
 
         <div class="outro-action-box">
             <p style="text-align: center; font-weight: 600; margin-bottom: 8px;">🎁 準備好跟我們一起挖寶了嗎？</p>
-            <p style="text-align: center; font-size: 13px; color: var(--text-secondary); margin-bottom: 16px;">點擊下方連結立即開始尋寶，請確認已詳閱購物規範，下單即視為同意規定喔！</p>
+            <p style="text-align: center; font-size: 13px; color: var(--text-secondary); margin-bottom: 16px;">點擊下方連結立場開始尋寶，請確認已詳閱購物規範，下單即視為同意規定喔！</p>
             <div class="action-links">
                 <a href="https://line.me" target="_blank" class="action-link-btn">💬 私訊 LINE 客服</a>
                 <a href="https://www.instagram.com/blue_nie/" target="_blank" class="action-link-btn" style="background-color: #a67c65;">🔗 逛逛 IG 精選動態 (blue_nie)</a>
@@ -707,7 +750,7 @@
         });
     }
 
-    // 常見問題開合控制
+    // 常見問題與連線注意事項開合控制
     function toggleAccordion(header) {
         const item = header.parentElement;
         item.classList.toggle('active');
