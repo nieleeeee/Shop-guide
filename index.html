@@ -270,34 +270,6 @@
             margin-bottom: 16px;
         }
 
-        /* 價格表格 */
-        .price-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 18px 0 12px 0;
-            font-size: 13.5px;
-            background: #faf8f5;
-            border-radius: 10px;
-            overflow: hidden;
-            border: 1px solid var(--border-color);
-        }
-
-        .price-table th, .price-table td {
-            padding: 12px 14px;
-            text-align: left;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .price-table th {
-            background-color: #f2eee9;
-            font-weight: 600;
-            color: var(--text-primary);
-        }
-
-        .price-table tr:last-child td {
-            border-bottom: none;
-        }
-
         /* 複製帳號按鈕 */
         .copy-box {
             display: flex;
@@ -521,7 +493,7 @@
         <div id="navTabs" class="nav-tabs-scroll">
             <button class="tab-btn" onclick="showPage('page1')">服務簡介</button>
             <button class="tab-btn" onclick="showPage('page2')">流程規範</button>
-            <button class="tab-btn" onclick="showPage('page3')">收費方式</button>
+            <button class="tab-btn" onclick="showPage('page3')">付款方式</button>
             <button class="tab-btn" onclick="showPage('page4')">常見問題</button>
             <button class="tab-btn" onclick="showPage('page5')">最新活動</button>
             <button class="tab-btn" onclick="showPage('page6')">真心話 💛</button>
@@ -541,7 +513,7 @@
         <div class="menu-list">
             <button class="menu-item" onclick="showPage('page1')">歡迎加入（服務簡介） <span>＞</span></button>
             <button class="menu-item" onclick="showPage('page2')">代購流程與規範 <span>＞</span></button>
-            <button class="menu-item" onclick="showPage('page3')">運費與收費方式 <span>＞</span></button>
+            <button class="menu-item" onclick="showPage('page3')">運費與付款方式 <span>＞</span></button>
             <button class="menu-item" onclick="showPage('page4')">常見問題 FAQ <span>＞</span></button>
             <button class="menu-item" onclick="showPage('page5')">最新活動情報 <span>＞</span></button>
             <button class="menu-item special" onclick="showPage('page6')">💛 寫在最後的真心話 <span>＞</span></button>
@@ -562,7 +534,7 @@
             </ul>
             <h3>貼心小提醒</h3>
             <ul>
-                <li><strong>新手挖寶：</strong>第一次來的寶寶們，可以先到我們的 IG 精選動態逛逛看歷年熱銷品項。</li>
+                <li><strong>新手挖寶：</strong>第一次來的寶寶們，可以先到我們的 IG 精選動態逛逛看歷年熱銷品項，社群記事本裡面也有很多激推商品。</li>
                 <li><strong>關閉通知：</strong>我們不定時上新，建議先關閉社群通知才不會吵到大家，有空時再來隨心逛逛就好！</li>
                 <li><strong>雙北面交：</strong>雙北熟人夥伴歡迎私訊預約面交💞。</li>
             </ul>
@@ -579,14 +551,14 @@
         </div>
         <div class="content-body">
             <h3>一般預購代購</h3>
-            <p><strong>私訊詢問 ➡️ 確認報價與付款 ➡️ 安心等候收貨</strong></p>
+            <p><strong>直接＋1下單/私訊詢問 ➡️ 確認報價與付款 ➡️ 安心等候收貨</strong></p>
             <ul>
                 <li><strong>客服回覆：</strong>若超過一天未收到回覆，可能是訊息被系統吃掉，請直接 @我們一次 提醒喔！</li>
                 <li><strong>討論串功能：</strong>為維護社群版面整潔，有任何疑問請善用「討論串」功能提問。</li>
             </ul>
             
             <h3>限時連線代購</h3>
-            <p><strong>限時連線選購 ➡️ 私訊下單 ➡️ 連線結束 ➡️ 統一通知付款</strong></p>
+            <p><strong>限時連線選購 ➡️ 直接＋1下單/私訊下單 ➡️ 連線結束 ➡️ 統一通知付款</strong></p>
 
             <div class="accordion-item" style="margin-top: 18px;">
                 <button class="accordion-header" onclick="toggleAccordion(this)">⚠️ 連線特別注意事項</button>
@@ -606,15 +578,15 @@
         </div>
     </div>
 
-    <!-- 3. 運費與收費方式 -->
+    <!-- 3. 運費與付款方式 -->
     <div id="page3" class="page">
         <div class="page-header">
-            <div class="page-title">運費與收費方式</div>
+            <div class="page-title">運費與付款方式</div>
         </div>
         <div class="content-body">
-            <h3>付款方式：匯款</h3>
+            <h3>付款方式：匯款、現金</h3>
             <ul>
-                <li><strong>指定銀行：</strong>國泰世華銀行 (013)</li>
+                <li><strong>匯款銀行：</strong>國泰世華銀行 (013)</li>
             </ul>
             <p style="margin-bottom: 6px;"><strong>帳號：</strong></p>
             <div class="copy-box">
@@ -653,7 +625,7 @@
             <div class="accordion-item">
                 <button class="accordion-header" onclick="toggleAccordion(this)">Ｑ：新增批次說明</button>
                 <div class="accordion-body">
-                    <p style="margin-top: 10px;">若之後有新增批次，急需商品的朋友可以先告知我們，我們會盡量優先安排。<br>若沒有特別告知，則會依原訂批次及訂單順序帶回，直到行李額滿為止，敬請見諒🙏。</p>
+                    <p style="margin-top: 10px;">若之後有臨時新增批次，急需商品的朋友可以先告知我們，我們會盡量優先安排。<br>若沒有特別告知，則會依原訂批次及訂單順序帶回，直到行李額滿為止，敬請見諒🙏。</p>
                 </div>
             </div>
 
@@ -688,7 +660,7 @@
         </div>
     </div>
 
-    <!-- 5. 最新活動 (已替換為新版內容) -->
+    <!-- 5. 最新活動 -->
     <div id="page5" class="page">
         <div class="page-header">
             <div class="page-title">最新活動情報</div>
@@ -700,11 +672,14 @@
                 <div class="event-tag ongoing">🔥 ONGOING / 正檔活動</div>
                 <div class="event-title">88 父親節 👔</div>
                 
-                <p style="margin-bottom: 8px;"><strong>📅 活動時間：</strong>8/5 - 8/7 23:59 止</p>
+                <p style="margin-bottom: 8px;">
+                    <strong>📅 活動時間：</strong><br>
+                    2026/8/5 - 2026/8/7 23:59 止
+                </p>
                 
                 <div class="event-highlight-box">
-                    <p style="margin-bottom: 4px; font-weight: bold; font-size: 15px; color: #736357;">🎉 活動內容：全館 88 折！</p>
-                    <p style="margin-bottom: 0; font-size: 14px;">折扣完結帳金額滿 <strong>$888</strong> 再送 <strong>$88 現金券</strong> 🎁</p>
+                    <p style="margin-bottom: 4px; font-weight: bold; font-size: 15px; color: #736357;">活動內容：全館 88 折！🎉</p>
+                    <p style="margin-bottom: 0; font-size: 14px;">折扣完結帳金額滿 <strong>$888</strong> 再送 <strong>$88 現金券</strong> 💸</p>
                 </div>
 
                 <p style="font-weight: 600; margin-top: 14px; margin-bottom: 6px; font-size: 13.5px;">⚠️ 提醒事項：</p>
@@ -729,14 +704,14 @@
             </div>
 
             <!-- 追蹤按鈕區 -->
-            <p style="text-align: center; font-weight: 600; margin-bottom: 10px; font-size: 14px;">📲 鎖定 IG 限時動態，搶先看連線新品：</p>
+            <p style="text-align: center; font-weight: 600; margin-bottom: 10px; font-size: 14px;">📲 鎖定 IG 限時動態：</p>
             <div class="action-links">
                 <a href="https://www.instagram.com/blue_nie/" target="_blank" class="action-link-btn" style="background-color: #a67c65;">🔗 逛逛 IG 精選動態 (blue_nie)</a>
                 <a href="https://www.instagram.com/ashhhh94/" target="_blank" class="action-link-btn" style="background-color: #a67c65;">🔗 逛逛 IG 精選動態 (ashhhh94)</a>
             </div>
 
             <p class="notice-text" style="text-align: center; margin-top: 20px;">
-                ※ 本代購團隊保有活動內容最終解釋與修改之權利。
+                ※ 本團隊保有活動內容最終解釋與修改之權利。
             </p>
         </div>
         <div class="page-footer-nav">
@@ -744,7 +719,88 @@
         </div>
     </div>
 
+    <!-- 6. 結語頁 -->
+    <div id="page6" class="page outro-page">
+        <h2>💛 寫在最後的真心話</h2>
+        
+        <p>「獨樂樂不如眾樂樂」看到你們收到包裹的喜悅，就是我們持續的動力。</p>
+        
+        <p>一路走來，我們發現做代購慢慢變成了一件非常純粹的興趣。雖然現在人民幣匯率上漲、代購換回台幣其實我們未必劃算，但每次幫大家「挖到寶藏」的過程，真的很有成就感又好玩！我們熱愛分享，喜歡跟大家一起變漂亮、讓生活變得更便利。</p>
+        
+        <p>不過，我們的人生規劃裡並沒有打算在中國待到退休，所以——能幫大家撿便宜、挖寶的日子，且看且珍惜，把握當下最重要！ 😉</p>
+        
+        <p>每一次的代購，都是一份跨越距離的信任託付。我們無比珍惜每一次為你服務的機會，也希望能透過我們的雙手，把那些讓你眼睛一亮的好東西，安穩地送到你手中。</p>
+        
+        <p>生活已經夠忙碌了，喜歡的東西就放心交給我們，讓我們陪你一起把生活過成你理想中的樣子。✨</p>
+
+        <div class="outro-action-box">
+            <p style="text-align: center; font-weight: 600; margin-bottom: 8px;">🎁 準備好跟我們一起挖寶了嗎？</p>
+            <p style="text-align: center; font-size: 13px; color: var(--text-secondary); margin-bottom: 16px;">點擊下方連結立即開始尋寶！</p>
+            <div class="action-links">
+                <a href="https://www.instagram.com/blue_nie/" target="_blank" class="action-link-btn" style="background-color: #a67c65;">🔗 逛逛 IG 精選動態 (blue_nie)</a>
+                <a href="https://www.instagram.com/ashhhh94/" target="_blank" class="action-link-btn" style="background-color: #a67c65;">🔗 逛逛 IG 精選動態 (ashhhh94)</a>
+            </div>
+        </div>
+
+        <div class="page-footer-nav">
+            <button class="back-btn-bottom" onclick="showPage('home')">＜ 返回主選單</button>
+        </div>
+    </div>
+
 </div>
+
+<script>
+    function showPage(pageId) {
+        // 隱藏所有頁面
+        const pages = document.querySelectorAll('.page');
+        pages.forEach(page => page.classList.remove('active'));
+
+        // 顯示目標頁面
+        const targetPage = document.getElementById(pageId);
+        if (targetPage) {
+            setTimeout(() => {
+                targetPage.classList.add('active');
+            }, 30);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // 頂部 Tab 顯示邏輯：首頁隱藏，內頁顯示並切換膠囊高亮
+        const navTabs = document.getElementById('navTabs');
+        if (pageId === 'home') {
+            navTabs.style.display = 'none';
+        } else {
+            navTabs.style.display = 'flex';
+            
+            const tabs = document.querySelectorAll('.tab-btn');
+            tabs.forEach(tab => {
+                tab.classList.remove('active');
+                if (tab.getAttribute('onclick').includes(pageId)) {
+                    tab.classList.add('active');
+                    tab.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+                }
+            });
+        }
+    }
+
+    // 帳號複製功能
+    function copyAccount() {
+        const accountText = document.getElementById('bankAccount').innerText;
+        navigator.clipboard.writeText(accountText).then(() => {
+            event.target.innerText = '已複製！✨';
+            setTimeout(() => {
+                event.target.innerText = '複製帳號';
+            }, 2000);
+        }).catch(err => {
+            alert('複製失敗，請手動複製');
+        });
+    }
+
+    // 常見問題與連線注意事項開合控制
+    function toggleAccordion(header) {
+        const item = header.parentElement;
+        item.classList.toggle('active');
+    }
+</script>
 
 </body>
 </html>
