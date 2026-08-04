@@ -757,7 +757,71 @@
         </div>
     </div>
 
+    <!-- 6. 真心話 (若缺少可保留容器) -->
+    <div id="page6" class="page">
+        <div class="page-header">
+            <div class="page-title">💛 寫在最後的真心話</div>
+        </div>
+        <div class="content-body outro-page">
+            <p>感謝每一位支持代你飛的夥伴，我們會持續為大家搜羅最優秀的商品！</p>
+        </div>
+        <div class="page-footer-nav">
+            <button class="back-btn-bottom" onclick="showPage('home')">＜ 返回主選單</button>
+        </div>
+    </div>
+
 </div>
+
+<!-- 補回關鍵的 JavaScript 控制邏輯 -->
+<script>
+    function showPage(pageId) {
+        // 隱藏所有頁面
+        const pages = document.querySelectorAll('.page');
+        pages.forEach(page => page.classList.remove('active'));
+
+        // 顯示目標頁面
+        const targetPage = document.getElementById(pageId);
+        if (targetPage) {
+            targetPage.classList.add('active');
+        }
+
+        // 控制頂部 Tab 欄位在首頁隱藏，內頁顯示
+        const navTabs = document.getElementById('navTabs');
+        if (pageId === 'home') {
+            navTabs.style.display = 'none';
+        } else {
+            navTabs.style.display = 'flex';
+        }
+
+        // 更新 Tab 高亮狀態
+        const tabs = document.querySelectorAll('.tab-btn');
+        tabs.forEach(tab => {
+            if (tab.getAttribute('onclick').includes(pageId)) {
+                tab.classList.add('active');
+                tab.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+            } else {
+                tab.classList.remove('active');
+            }
+        });
+
+        // 切換頁面時自動回到最上方
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function toggleAccordion(button) {
+        const item = button.parentElement;
+        item.classList.toggle('active');
+    }
+
+    function copyAccount() {
+        const accountText = document.getElementById('bankAccount').innerText;
+        navigator.clipboard.writeText(accountText).then(() => {
+            alert('銀行帳號已複製：' + accountText);
+        }).catch(err => {
+            alert('複製失敗，請手動複製');
+        });
+    }
+</script>
 
 </body>
 </html>
